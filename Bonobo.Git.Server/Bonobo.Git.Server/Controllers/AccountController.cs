@@ -62,6 +62,9 @@ namespace Bonobo.Git.Server.Controllers
         [AuthorizeRedirect(Roles = Definitions.Roles.Administrator)]
         public ActionResult Index()
         {
+            if (TempData["CreateSuccess"] != null && (bool)TempData["CreateSuccess"])
+                ViewBag.CreateSuccess = true;
+
             return View( GetDetailUsers());
         }
 

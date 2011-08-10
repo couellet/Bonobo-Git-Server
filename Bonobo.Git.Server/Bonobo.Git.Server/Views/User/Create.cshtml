@@ -1,9 +1,10 @@
-﻿@model Bonobo.Git.Server.Models.RegisterModel
+﻿@model RegisterModel
 @{
     ViewBag.Title = Resources.Home_Register_Title;
 }
+    
 <h2>@Resources.Home_Register_Title</h2>
-@using (Html.BeginForm("Register", "Home", FormMethod.Post, new { @class = "uniForm" }))
+@using (Html.BeginForm("Create", "User", FormMethod.Post, new { @class = "uniForm" }))
 {
     @Html.ValidationSummary(false, Resources.Home_Register_Unsuccessfull, new { @id = "errorMsg" })
     <fieldset> 

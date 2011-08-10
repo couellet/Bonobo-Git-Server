@@ -274,7 +274,7 @@
     <value>Surname</value>
   </data>
   <data name="Home_Register_Title" xml:space="preserve">
-    <value>Register</value>
+    <value>Create new user</value>
   </data>
   <data name="Home_Register_Unsuccessfull" xml:space="preserve">
     <value>Account creation was unsuccessful. Please correct the errors and try again.</value>
@@ -671,5 +671,11 @@
   </data>
   <data name="Validation_StringLength" xml:space="preserve">
     <value>"{0}" should be smaller than {1} chars.</value>
+  </data>
+  <data name="Account_Create_Success" xml:space="preserve">
+    <value>The new user has been created successfully.</value>
+  </data>
+  <data name="User_CreateNew" xml:space="preserve">
+    <value>Create new user</value>
   </data>
 </root>
