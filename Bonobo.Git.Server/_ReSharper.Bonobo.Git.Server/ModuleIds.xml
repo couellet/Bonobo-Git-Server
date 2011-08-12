@@ -1,3 +1,4 @@
 <Modules>
   <Module PersistentId="6129B3FE-B282-4F6F-8836-8AF66602F8DA" ModuleId="Bonobo.Git.Server" />
+  <Module PersistentId="E5B6292A-79F6-4F27-966C-B8A49806E220" ModuleId="Bonobo.Git.Server.Test" />
 </Modules>

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Security;
 using Bonobo.Git.Server.Data;
@@ -36,7 +38,7 @@ namespace Bonobo.Git.Server.Security
                 var user = new User
                 {
                     Username = username,
-                    Password = EncryptPassword(password),
+                    Password = EncryptSomeonePassword(password),
                     Name = name,
                     Surname = surname,
                     Email = email,
@@ -128,16 +130,25 @@ namespace Bonobo.Git.Server.Security
 
         private bool ComparePassword(string password, string hash)
         {
-            return EncryptPassword(password) == hash;
+            return EncryptPassword(password) == hash || EncryptSomeonePassword(password) == hash;
         }
 
         private string EncryptPassword(string password)
         {
-            System.Security.Cryptography.MD5CryptoServiceProvider x = new System.Security.Cryptography.MD5CryptoServiceProvider();
-            byte[] data = System.Text.Encoding.ASCII.GetBytes(password);
+            var x = new MD5CryptoServiceProvider();
+            var data = System.Text.Encoding.ASCII.GetBytes(password);
             data = x.ComputeHash(data);
             return System.Text.Encoding.ASCII.GetString(data);
         }
 
+        private string EncryptSomeonePassword(string password)
+        {
+            var sha1 = SHA1.Create();
+
+            var output = sha1.ComputeHash(Encoding.Default.GetBytes(password))
+                .Aggregate("", (current, x) => current + x.ToString("x2"));
+
+            return output;
+        }
     }
 }
